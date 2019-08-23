@@ -44,9 +44,35 @@ class Materia
      */
     private $temas;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dia_inicio;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dia_fin;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $horas_autonomo;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $sesiones;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Material", mappedBy="materia")
+     */
+    private $materiales;
+
     public function __construct()
     {
         $this->temas = new ArrayCollection();
+        $this->materiales = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -132,6 +158,85 @@ class Materia
             // set the owning side to null (unless already changed)
             if ($tema->getMateria() === $this) {
                 $tema->setMateria(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getDiaInicio(): ?\DateTimeInterface
+    {
+        return $this->dia_inicio;
+    }
+
+    public function setDiaInicio(\DateTimeInterface $dia_inicio): self
+    {
+        $this->dia_inicio = $dia_inicio;
+
+        return $this;
+    }
+
+    public function getDiaFin(): ?\DateTimeInterface
+    {
+        return $this->dia_fin;
+    }
+
+    public function setDiaFin(\DateTimeInterface $dia_fin): self
+    {
+        $this->dia_fin = $dia_fin;
+
+        return $this;
+    }
+
+    public function getHorasAutonomo(): ?int
+    {
+        return $this->horas_autonomo;
+    }
+
+    public function setHorasAutonomo(int $horas_autonomo): self
+    {
+        $this->horas_autonomo = $horas_autonomo;
+
+        return $this;
+    }
+
+    public function getSesiones(): ?int
+    {
+        return $this->sesiones;
+    }
+
+    public function setSesiones(int $sesiones): self
+    {
+        $this->sesiones = $sesiones;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Material[]
+     */
+    public function getMateriales(): Collection
+    {
+        return $this->materiales;
+    }
+
+    public function addMaterial(Material $materiale): self
+    {
+        if (!$this->materiales->contains($materiale)) {
+            $this->materiales[] = $materiale;
+            $materiale->setMateria($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaterial(Material $materiale): self
+    {
+        if ($this->materiales->contains($materiale)) {
+            $this->materiales->removeElement($materiale);
+            // set the owning side to null (unless already changed)
+            if ($materiale->getMateria() === $this) {
+                $materiale->setMateria(null);
             }
         }
 

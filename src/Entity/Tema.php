@@ -44,9 +44,15 @@ class Tema
      */
     private $sesiones;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Material", mappedBy="tema")
+     */
+    private $materiales;
+
     public function __construct()
     {
         $this->sesiones = new ArrayCollection();
+        $this->materiales = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -136,5 +142,36 @@ class Tema
     public function __toString()
     {
         return $this->nombre;
+    }
+
+    /**
+     * @return Collection|Material[]
+     */
+    public function getMateriales(): Collection
+    {
+        return $this->materiales;
+    }
+
+    public function addMaterial(Material $materiale): self
+    {
+        if (!$this->materiales->contains($materiale)) {
+            $this->materiales[] = $materiale;
+            $materiale->setTema($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaterial(Material $materiale): self
+    {
+        if ($this->materiales->contains($materiale)) {
+            $this->materiales->removeElement($materiale);
+            // set the owning side to null (unless already changed)
+            if ($materiale->getTema() === $this) {
+                $materiale->setTema(null);
+            }
+        }
+
+        return $this;
     }
 }

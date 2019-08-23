@@ -47,6 +47,11 @@ class Sesion
      */
     private $tema;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descripcion;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -127,5 +132,17 @@ class Sesion
     public function __toString()
     {
         return 'SES'.str_pad($this->id, 4, '0', STR_PAD_LEFT);
+    }
+
+    public function getDescripcion(): ?string
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion(?string $descripcion): self
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
     }
 }
