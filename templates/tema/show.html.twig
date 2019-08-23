@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tema{% endblock %}
+
+{% block pagename %}{{tema.nombre}}{% endblock %}
+
+{% block breadcrumb %}
+    <li class=""><a href="{{path('tema_index')}}">Temas</a></li>
+    <li class="active">{{tema.nombre}}</li>
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ tema.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>{{ tema.nombre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Descripcion</th>
+                        <td>{{ tema.descripcion }}</td>
+                    </tr>
+                    <tr>
+                        <th>Orden</th>
+                        <td>{{ tema.orden }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Listado de Sesiones</th>
+                    </tr>
+                </thead>
+                {% for sesion in tema.sesiones %}
+                <tr>
+                    <td>
+                        <a href="{{path('sesion_show', {'id':sesion.id})}}">{{sesion}}</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <a class="btn btn-default" href="{{ path('tema_index') }}">Volver</a>
+
+    <a class="btn btn-default" href="{{ path('tema_edit', {'id': tema.id}) }}">Editar</a>
+
+    {{ include('tema/_delete_form.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Materia{% endblock %}
+
+{% block pagename %}Editar{% endblock %}
+
+{% block breadcrumb %}
+    <li class=""><a href="{{path('materia_index')}}">Materias</a></li>
+    <li class="">Editar</li>
+    <li class="active">{{materia.nombre}}</li>
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            {{ include('materia/_form.html.twig', {'button_label': 'Guardar'}) }}
+        </div>
+    </div>
+
+    <a class="btn btn-default" href="{{ path('materia_index') }}">Volver</a>
+
+    {{ include('materia/_delete_form.html.twig') }}
+
+{% endblock %}

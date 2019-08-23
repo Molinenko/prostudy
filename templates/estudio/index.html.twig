@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Estudios{% endblock %}
+
+{% block pagename %}Lista de Estudios{% endblock %}
+
+{% block breadcrumb %}
+    <li class="active">Estudios</li>
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        <a class="btn btn-default btn-over-table" href="{{ path('estudio_new') }}">Nuevo</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Organismo</th>
+                <th>aciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for estudio in estudios %}
+            <tr>
+                <td>{{ estudio.id }}</td>
+                <td>{{ estudio.nombre }}</td>
+                <td>{{ estudio.organismo }}</td>
+                <td>
+                    <a class="btn btn-sm btn-default" href="{{ path('estudio_show', {'id': estudio.id}) }}">ver</a>
+                    <a class="btn btn-sm btn-default" href="{{ path('estudio_edit', {'id': estudio.id}) }}">editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">No se han encotrado registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

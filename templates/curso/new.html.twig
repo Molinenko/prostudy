@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nuevo Curso{% endblock %}
+
+{% block pagename %}Añadir Curso{% endblock %}
+
+{% block breadcrumb %}
+    <li class=""><a href="{{path('curso_index')}}">Cursos</a></li>
+    <li class="active">Nuevo</li>
+{% endblock %}
+
+{% block body %}
+
+    {{ include('curso/_form.html.twig') }}
+
+    <a class="btn btn-default" href="{{ path('curso_index') }}">Volver</a>
+
+{% endblock %}

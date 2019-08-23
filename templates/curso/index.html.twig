@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Cursos{% endblock %}
+
+{% block pagename %}Lista de Cursos{% endblock %}
+
+{% block breadcrumb %}
+    <li class="active">Cursos</li>
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        <a class="btn btn-default btn-over-table" href="{{ path('curso_new') }}">Nuevo</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Estudio</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for curso in cursos %}
+            <tr>
+                <td>{{ curso.id }}</td>
+                <td>{{ curso.nombre }}</td>
+                <td>{{ curso.estudio }}</td>
+                <td>
+                    <a class="btn btn-sm btn-default" href="{{ path('curso_show', {'id': curso.id}) }}">ver</a>
+                    <a class="btn btn-sm btn-default" href="{{ path('curso_edit', {'id': curso.id}) }}">editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">No se han encotrado registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

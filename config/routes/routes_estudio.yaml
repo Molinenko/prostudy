@@ -1,0 +1,24 @@
+estudio_index:
+    path: /
+    controller: App\Controller\EstudioController::index
+    methods: ["GET","POST"]
+
+estudio_new:
+    path: /new
+    controller: App\Controller\EstudioController::new
+    methods: ["GET","POST"]
+
+estudio_show:
+    path: /{id}
+    controller: App\Controller\EstudioController::show
+    methods: ["GET"]
+
+estudio_edit:
+    path: /{id}/edit
+    controller: App\Controller\EstudioController::edit
+    methods: ["GET","POST"]
+
+estudio_delete:
+    path: /{id}/delete
+    controller: App\Controller\EstudioController::delete
+    methods: ["DELETE"]

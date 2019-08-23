@@ -1,0 +1,24 @@
+materia_index:
+    path: /
+    controller: App\Controller\MateriaController::index
+    methods: ["GET","POST"]
+
+materia_new:
+    path: /new
+    controller: App\Controller\MateriaController::new
+    methods: ["GET","POST"]
+
+materia_show:
+    path: /{id}
+    controller: App\Controller\MateriaController::show
+    methods: ["GET"]
+
+materia_edit:
+    path: /{id}/edit
+    controller: App\Controller\MateriaController::edit
+    methods: ["GET","POST"]
+
+materia_delete:
+    path: /{id}/delete
+    controller: App\Controller\MateriaController::delete
+    methods: ["DELETE"]

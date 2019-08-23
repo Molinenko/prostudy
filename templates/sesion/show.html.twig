@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sesión{% endblock %}
+
+{% block pagename %}{{sesion}}{% endblock %}
+
+{% block breadcrumb %}
+    <li class=""><a href="{{path('sesion_index')}}">Sesiones</a></li>
+    <li class="active">{{sesion}}</li>
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ sesion.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Inicio</th>
+                        <td>{{ sesion.inicio ? sesion.inicio|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fin</th>
+                        <td>{{ sesion.fin ? sesion.fin|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tiempo total</th>
+                        <td>{{ sesion.tiempoTotal }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tiempo efectivo</th>
+                        <td>{{ sesion.tiempoEfectivo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Rendimiento</th>
+                        <td>{{ sesion.rendimiento }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <a class="btn btn-default" href="{{ path('sesion_index') }}">Volver</a>
+
+    <a class="btn btn-default" href="{{ path('sesion_edit', {'id': sesion.id}) }}">Editar</a>
+
+    {{ include('sesion/_delete_form.html.twig') }}
+    
+{% endblock %}

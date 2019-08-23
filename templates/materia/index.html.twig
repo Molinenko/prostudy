@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Materias{% endblock %}
+
+{% block pagename %}Lista de Materias{% endblock %}
+
+{% block breadcrumb %}
+    <li class="active">Materias</li>
+{% endblock %}
+
+{% block body %}
+    
+    <div>
+        <a class="btn btn-default btn-over-table" href="{{ path('materia_new') }}">Nueva</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Horas estimadas</th>
+                <th>Profesor</th>
+                <th>Curso</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for materia in materias %}
+            <tr>
+                <td>{{ materia.id }}</td>
+                <td>{{ materia.nombre }}</td>
+                <td>{{ materia.horasEstimadas }}</td>
+                <td>{{ materia.profesor }}</td>
+                <td>{{ materia.curso }}</td>
+                <td>
+                    <a class="btn btn-sm btn-default" href="{{ path('materia_show', {'id': materia.id}) }}">ver</a>
+                    <a class="btn btn-sm btn-default" href="{{ path('materia_edit', {'id': materia.id}) }}">editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">No se han encotrado registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

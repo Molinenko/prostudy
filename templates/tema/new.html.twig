@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nueva Tema{% endblock %}
+
+{% block pagename %}Añadir Tema{% endblock %}
+
+{% block breadcrumb %}
+    <li class=""><a href="{{path('tema_index')}}">Temas</a></li>
+    <li class="active">Nueva</li>
+{% endblock %}
+
+{% block body %}
+
+    {{ include('tema/_form.html.twig') }}
+
+    <a class="btn btn-default" href="{{ path('tema_index') }}">Volver</a>
+
+{% endblock %}

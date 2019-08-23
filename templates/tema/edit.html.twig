@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Tema{% endblock %}
+
+{% block pagename %}Editar{% endblock %}
+
+{% block breadcrumb %}
+    <li class=""><a href="{{path('materia_index')}}">Temas</a></li>
+    <li class="">Editar</li>
+    <li class="active">{{tema.nombre}}</li>
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            {{ include('tema/_form.html.twig', {'button_label': 'Guardar'}) }}
+        </div>
+    </div>
+
+    <a class="btn btn-default" href="{{ path('tema_index') }}">Volver</a>
+
+    {{ include('tema/_delete_form.html.twig') }}
+    
+{% endblock %}

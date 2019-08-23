@@ -1,0 +1,27 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+app_main:
+    path: /
+    controller: App\Controller\MainController::index
+
+app_estudio:
+    resource: './routes/routes_estudio.yaml'
+    prefix: /estudio
+
+app_curso:
+    resource: './routes/routes_curso.yaml'
+    prefix: /curso
+
+app_materia:
+    resource: './routes/routes_materia.yaml'
+    prefix: /materia
+
+app_tema:
+    resource: './routes/routes_tema.yaml'
+    prefix: /tema
+
+app_sesion:
+    resource: './routes/routes_sesion.yaml'
+    prefix: /sesion

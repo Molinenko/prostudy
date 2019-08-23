@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nuevo Estudio{% endblock %}
+
+{% block pagename %}Añadir Estudio{% endblock %}
+
+{% block breadcrumb %}
+    <li class=""><a href="{{path('estudio_index')}}">Estudios</a></li>
+    <li class="active">Nuevo</li>
+{% endblock %}
+
+{% block body %}
+
+    {{ include('estudio/_form.html.twig') }}
+
+    <a class="btn btn-default" href="{{ path('estudio_index') }}">Volver</a>
+
+{% endblock %}

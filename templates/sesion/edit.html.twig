@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Sesión{% endblock %}
+
+{% block pagename %}Editar{% endblock %}
+
+{% block breadcrumb %}
+    <li class=""><a href="{{path('sesion_index')}}">Sesiones</a></li>
+    <li class="">Editar</li>
+    <li class="active">{{sesion}}</li>
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            {{ include('sesion/_form.html.twig', {'button_label': 'Guardar'}) }}
+        </div>
+    </div>
+
+    <a class="btn btn-default" href="{{ path('sesion_index') }}">Volver</a>
+
+    {{ include('sesion/_delete_form.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,24 @@
+tema_index:
+    path: /
+    controller: App\Controller\TemaController::index
+    methods: ["GET","POST"]
+
+tema_new:
+    path: /new
+    controller: App\Controller\TemaController::new
+    methods: ["GET","POST"]
+
+tema_show:
+    path: /{id}
+    controller: App\Controller\TemaController::show
+    methods: ["GET"]
+
+tema_edit:
+    path: /{id}/edit
+    controller: App\Controller\TemaController::edit
+    methods: ["GET","POST"]
+
+tema_delete:
+    path: /{id}/delete
+    controller: App\Controller\TemaController::delete
+    methods: ["DELETE"]

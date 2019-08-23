@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Sesiones{% endblock %}
+
+{% block pagename %}Lista de Sesiones{% endblock %}
+
+{% block breadcrumb %}
+    <li class="active">Sesiones</li>
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        <a class="btn btn-default btn-over-table" href="{{ path('sesion_new') }}">Nueva</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Tiempo total</th>
+                <th>Tiempo efectivo</th>
+                <th>Tema</th>
+                <th>Rendimiento</th>
+                <th>acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sesion in sesions %}
+            <tr>
+                <td>{{ sesion.id }}</td>
+                <td>{{ sesion.inicio ? sesion.inicio|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ sesion.fin ? sesion.fin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ sesion.tiempoTotal }}</td>
+                <td>{{ sesion.tiempoEfectivo }}</td>
+                <td>{{ sesion.tema }}</td>
+                <td>{{ sesion.rendimiento }}</td>
+                <td>
+                    <a class="btn btn-sm btn-default" href="{{ path('sesion_show', {'id': sesion.id}) }}">ver</a>
+                    <a class="btn btn-sm btn-default" href="{{ path('sesion_edit', {'id': sesion.id}) }}">editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">No se han encotrado registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Temas{% endblock %}
+
+{% block pagename %}Lista de Temas{% endblock %}
+
+{% block breadcrumb %}
+    <li class="active">Temas</li>
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        <a class="btn btn-default btn-over-table" href="{{ path('tema_new') }}">Nuevo</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Orden</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Materia</th>
+                <th>acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tema in temas %}
+            <tr>
+                <td>{{ tema.id }}</td>
+                <td>{{ tema.orden }}</td>
+                <td>{{ tema.nombre }}</td>
+                <td>{{ tema.descripcion|length > 50 ? tema.descripcion|slice(0, 80) ~ '...' : tema.descripcion }}</td>
+                <td>{{ tema.materia }}</td>
+                <td>
+                    <a class="btn btn-sm btn-default" href="{{ path('tema_show', {'id': tema.id}) }}">ver</a>
+                    <a class="btn btn-sm btn-default" href="{{ path('tema_edit', {'id': tema.id}) }}">editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">No se han encotrado registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

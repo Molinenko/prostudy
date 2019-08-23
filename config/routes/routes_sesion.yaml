@@ -1,0 +1,24 @@
+sesion_index:
+    path: /
+    controller: App\Controller\SesionController::index
+    methods: ["GET","POST"]
+
+sesion_new:
+    path: /new
+    controller: App\Controller\SesionController::new
+    methods: ["GET","POST"]
+
+sesion_show:
+    path: /{id}
+    controller: App\Controller\SesionController::show
+    methods: ["GET"]
+
+sesion_edit:
+    path: /{id}/edit
+    controller: App\Controller\SesionController::edit
+    methods: ["GET","POST"]
+
+sesion_delete:
+    path: /{id}/delete
+    controller: App\Controller\SesionController::delete
+    methods: ["DELETE"]
